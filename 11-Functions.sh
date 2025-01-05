@@ -13,7 +13,7 @@ fi
 }
 
 
-if[$? -ne 0]
+if[ $? -ne 0 ]
 
  then
   dnf install mysql -y
@@ -28,7 +28,7 @@ fi
 
 
  
-if[$? -ne 0]
+if[ $? -ne 0 ]
 
 then
  dnf install git -y
