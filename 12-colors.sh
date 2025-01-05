@@ -25,7 +25,7 @@ if [ $? -ne 0 ]
 exit 1
 
 else
-    echo -e "MY SQL  $Y installed already"
+    echo -e "MY SQL...$Y installed already"
 fi 
     
 
@@ -40,6 +40,6 @@ then
     exit 1
 
 else
-    echo -e "MY git -$Y installed already"
+    echo -e "MY git.... $Y installed already"
 
  fi
