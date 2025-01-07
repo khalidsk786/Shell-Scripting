@@ -1,45 +1,42 @@
 #!/bin/bash
-
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-
-LOGS_FOLDER="/var/log/shellscripting-logs"
-LOG_FILE=$(echo $0 | cut -d "." -f1 )
+LOGS_FOLDER="/var/log/shellscripting.logs"
+LOG_FILE=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-LOG_FILE_NAME= "$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
+LOG_FILE_NAME="$LOGS_FOLDER/$LOG_FILE-$TIMESTAMP.log"
 mkdir -p $LOGS_FOLDER
-
-VALIDATE(){
-if [$1 -ne 0]
+VALIDATE() {
+  if [ $1 -ne 0 ]
 then
-  echo -e "$2... $R Failure $N"
-  exit 1
-else
-   echo -e "$2... $G success $N"
-fi  
+    echo -e "$2... $R Failure $N"
+    exit 1
+  else
+    echo -e "$2... $G success $N"
+  fi
 }
-echo "script excuted at: $TIMESTAMP" &>>$LOG_FILE_NAME
+echo "Script executed at: $TIMESTAMP" &>> $LOG_FILE_NAME
 if [ $USERID -ne 0 ]
-then
-   echo "Execute with sudo access for installation"
-   exit 1 #other than 0 
+ then
+  echo "Execute with sudo access for installation"
+  exit 1
 fi
-dnf list installed mysql &>>$LOG_FILE_NAME
+dnf list installed mysql &>> $LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
-  dnf install mysql -y &>>$LOG_FILE_NAME
-  VALIDATE $? "installing mysql" 
+  dnf install mysql -y &>> $LOG_FILE_NAME
+  VALIDATE $? "Installing MySQL"
 else
-  echo -e "my sql installed already... $Y installed $N"
+  echo -e "MySQL installed already... $Y installed $N" &>> $LOG_FILE_NAME
 fi
-dnf list installed git &>>$LOG_FILE_NAME
-if [ $? -ne 0]
+dnf list installed git &>> $LOG_FILE_NAME
+if [ $? -ne 0 ]
 then
- dnf install git -y &>>$LOG_FILE_NAME
- VALIDATE $? "installing git"
+  dnf install git -y &>> $LOG_FILE_NAME
+  VALIDATE $? "Installing Git"
 else
- echo -e "git installed already.... $Y installed"
-fi
+  echo -e "Git installed already... $Y installed $N" &>> $LOG_FILE_NAME
+fi 
