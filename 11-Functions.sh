@@ -1,41 +1,47 @@
 #!/bin/bash
+USERID=$(id -u)
 
-VALIDATE (){
+VALIDATE(){
+
 if [$1 -ne 0]
 then
-
-    echo"$2...FAILURE"
-    exit 1
-
+  echo "$2...Failure"
+  exit 1
 else
-     echo "$2...SUCCESS"
-fi
+echo "$2...success"
+        
+fi     
 }
 
+if [ $USERID -ne 0 ]
+then
+   echo "Execute with sudo access for installation"
+   exit 1 #other than 0 
+fi
+
+dnf list installed mysql
 
 if [ $? -ne 0 ]
+then
 
- then
-    dnf install mysql -y
-    VALIDATE $?
-exit 1
+ dnf install mysql -y
 
+ VALIDATE $? "installing mysql"    
 else
-    echo "MY SQL installed already"
-fi 
-    
+ echo "my sql installed already"
+fi
 
+dnf list installed git
 
-
- 
-if [ $? -ne 0 ]
+if [ $? ne 0]
 
 then
-    dnf install git -y
-    VALIDATE $?
-    exit 1
-
+ dnf install git -y
+       
+ VALIDATE $? "installing git" 
 else
-    echo "MY git installed already"
+ echo "git installed already"
+fi
 
- fi
+
+
