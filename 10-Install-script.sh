@@ -7,6 +7,7 @@ then
    exit 1 #other than 0 
 fi
 dnf list installed mysql
+
 if [ $? -ne 0 ]
 then
 
@@ -31,27 +32,27 @@ else
 
 fi
 
-dnf list installed git
+# dnf list installed git
 
-if [ $? ne 0]
-than
-   dnf install git -y
+# if [ $? ne 0]
+# than
+#    dnf install git -y
 
-      if [$? -ne 0]
-      then
-         echo "git installing : failure"
-         exit 1
-     else
-         echo "git installing : success"
+#       if [$? -ne 0]
+#       then
+#          echo "git installing : failure"
+#          exit 1
+#      else
+#          echo "git installing : success"
 
-      fi
+#       fi
 
    
-else
+# else
   
-  echo "git installed already"
+#   echo "git installed already"
 
-fi
+# fi
 
 
 
