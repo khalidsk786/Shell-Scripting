@@ -20,7 +20,6 @@ else
    echo "$2... $G success $N"
         
 fi  
-
 }
 
 echo "script excuted at: $TIMESTAMP" &>>$LOG_FILE_NAME
@@ -30,26 +29,25 @@ then
    exit 1 #other than 0 
 fi
 
-dnf list installed mysql
+dnf list installed mysql &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then
 
- dnf install mysql -y
+ dnf install mysql -y &>>$LOG_FILE_NAME
 
- VALIDATE $? "installing mysql" &>>$LOG_FILE_NAME
+ VALIDATE $? "installing mysql" 
 else
  echo "my sql installed already... $Y installed $N"
 fi
 
-dnf list installed git
+dnf list installed git &>>$LOG_FILE_NAME
 
 if [ $? -ne 0]
-
 then
- dnf install git -y
+ dnf install git -y &>>$LOG_FILE_NAME
        
- VALIDATE $? "installing git"&>>$LOG_FILE_NAME
+ VALIDATE $? "installing git"
 else
  echo "git installed already.... $Y installed"
 fi
