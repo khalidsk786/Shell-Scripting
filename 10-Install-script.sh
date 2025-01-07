@@ -6,57 +6,48 @@ then
    echo "Execute with sudo access for installation"
    exit 1 #other than 0 
 fi
-# dnf list installed mysql
+dnf list installed mysql
+if [ $? -ne 0 ]
+then
 
-# if [ $? -ne 0 ]
+     dnf install mysql -y
 
-#    then
+      if [ $? -ne 0 ]
+      then
 
-#      dnf install mysql -y
+         echo "installing mysql : Failure"
+         exit 1
 
-#        if [ $? -ne 0 ]
-         
-#           then
+      else
 
-#              echo "installing mysql : Failure"
-
-#              exit 1
-
-#          else
-
-#            echo "installing my sql : success"
+         echo "installing my sql : success"
         
-#       fi     
+      fi     
 
 
-#    else
+else
 
-#   echo "my sql installed already"
+  echo "my sql installed already"
 
-# fi
+fi
 
 dnf list installed git
 
 if [ $? ne 0]
+than
+   dnf install git -y
 
-   than
-
-    dnf install git -y
-
-     if [$? -ne 0]
-      
-         then
-           echo "git installing : failure"
-           exit 1
-         else
-      
-
-            echo "git installing : success"
+      if [$? -ne 0]
+      then
+         echo "git installing : failure"
+         exit 1
+     else
+         echo "git installing : success"
 
       fi
 
    
-   else
+else
   
   echo "git installed already"
 
