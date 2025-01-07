@@ -51,3 +51,4 @@ do
     else
         echo -e "$package already installed $Y ...INSTALLED $N"
     fi
+done
