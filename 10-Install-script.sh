@@ -33,7 +33,7 @@ dnf list installed git
 
 if [ $? ne 0]
 than
-   dnf install git -y
+  dnf install git -y
 
       if [$? -ne 0]
       then
@@ -43,12 +43,8 @@ than
          echo "git installing : success"
 
       fi
-
-   
 else
-  
   echo "git installed already"
-
 fi
 
 
