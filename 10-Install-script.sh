@@ -35,32 +35,32 @@ if [ $? -ne 0 ]
 
 fi
 
-dnf list installed git
+# dnf list installed git
 
-if [ $? ne 0]
+# if [ $? ne 0]
 
-   than
+#    than
 
-    dnf install git -y
+#     dnf install git -y
 
-     if [$? -ne 0]
+#      if [$? -ne 0]
       
-         then
-           echo "git installing : failure"
-           exit 1
-         else
+#          then
+#            echo "git installing : failure"
+#            exit 1
+#          else
       
 
-            echo "git installing : success"
+#             echo "git installing : success"
 
-      fi
+#       fi
 
    
-   else
+#    else
   
-  echo "git installed already"
+#   echo "git installed already"
 
-fi
+# fi
 
 
 
