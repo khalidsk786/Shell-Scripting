@@ -8,6 +8,7 @@ then
 fi
 
 dnf list installed mysql
+echo "list of installed mysql status : $?"
 
 if [ $? -ne 0 ]
 then
